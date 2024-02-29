@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import './Calendar.css'
 
-const SideNav = (props) => {
+const Calendar = (props) => {
 return (
 <div>
-    <h1>1111</h1>
+    <h1></h1>
 </div>
  );
 };
 
-export default SideNav;
+export default Calendar;
