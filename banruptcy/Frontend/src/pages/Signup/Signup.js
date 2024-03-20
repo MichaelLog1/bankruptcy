@@ -1,10 +1,11 @@
 import React from 'react'
+import LoginSignup from '../../Components/LoginSignup/LoginSignup';
 
 function Signup() {
 
     return (
       <div>
-        <h1>Signup Page</h1>
+        <LoginSignup></LoginSignup>
       </div>
       
     );
