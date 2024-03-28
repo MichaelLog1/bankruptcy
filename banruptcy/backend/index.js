@@ -1,31 +1,23 @@
 const express = require("express");
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const app = express();
-const cors = require('cors');
-const mysql = require('mysql');
-const bodyParser = require('body-parser');
 
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
-app.use(cors());
-const db = mysql.createPool({
-    connectionLimit : 10,
-    host : 'localhost',
-    user : 'root',
-    password : 'Psyces31403&12',
-    database : 'bankruptcy'
-});
-
-/*
 // example API
-app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!" });
+app.post("/Signup", (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    const email = req.body.email;
+    // These vars now have the data from the signup form
+    console.log(username);
+    console.log(password);
+    console.log(email);
+
+
 });
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
-*/
 
 //Database
 app.post('/signup', (req, res) => {
@@ -39,6 +31,10 @@ app.post('/signup', (req, res) => {
             res.send({username: username})
         }
     })
+    /* username and password are values from the frontend (ex. input buttons)
+    that are sent through text that will be executed in MySQL
+    this command will add the value to the User table database
+    -Josh */
 })
 app.listen(8080, () => {
     console.log(`Server listening on port 8080`);
