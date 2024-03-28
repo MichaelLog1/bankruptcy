@@ -5,14 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  background: linear-gradient(#2A00B7, #42006C);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-//You can delete the tailwind stuff -Josh
