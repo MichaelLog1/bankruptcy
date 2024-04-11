@@ -1,10 +1,17 @@
 import React from 'react'
+import Sidenav from "../../Components/SideNav/SideNav"
+import Calendar from "../../Components/Calendar/Calendar"
+import Visuals from "../../Components/Visuals/Visuals"
+import "./Dashboard.css"
+
 
 function Dashboard() {
 
     return (
-      <div>
-        <h1>Navbar, Calendar, Visuals</h1>
+      <div class="components">
+        <Sidenav></Sidenav>
+        <Calendar/>
+        <Visuals></Visuals>
       </div>
       
     );
