@@ -52,3 +52,37 @@ const db = mysql.createConnection({
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
+
+//Processing Functions
+class goal {
+    constructor(target, contributed, time) {
+        this.target = target;
+        this.contributed = contributed;
+        this.time = time;
+    }
+}
+//May need to recycle logic in database code for better implementation with arrays
+function makeContribution (contribution) {
+    while (contribution) {
+        const nextGoal = new goal(0, 0, 1); //replace with database parsing
+        if (contribution >= (nextGoal.target - nextGoal.contributed)) {
+            contribution -= nextGoal.target - nextGoal.contributed;
+            nextGoal.contributed = nextGoal.target;
+            //Use goal data to update database
+        }
+        else {
+            nextGoal.contributed += contribution;
+            //Use goal data to update database
+            return 0;
+        }
+    };
+    //Retruns money left after completing a contribution
+    return contribution;
+};
+
+function getContribution() {
+    //for each goal in the user's database
+    const nextGoal = new goal(0, 0, 1);
+    let contributionNeeded = 0;
+    contributionNeeded += (nextGoal.target - nextGoal.contributed) / nextGoal.time;
+};
