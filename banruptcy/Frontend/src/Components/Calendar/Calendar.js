@@ -1,5 +1,6 @@
 import './Calendar.css';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import Axios from "axios";
 
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -18,12 +19,13 @@ const Calendar = () => {
     ));
   };
 
-  const [events, setEvents] = useState([
-    { id: 1, date: '2024-04-15', description: 'Save $100 for video games' },
-    { id: 2, date: '2024-04-22', description: '1500 for rent' }
-  ]);
+  const [events, setEvents] = useState([]);
 
-
+  const LoadEvents = () => {
+    Axios.get('http://localhost:3001/financialdata').then(res => {
+      setEvents(res.data);
+      });
+  }
 
   const renderDates = () => {
     const month = currentDate.getMonth();
@@ -45,7 +47,7 @@ const Calendar = () => {
         <div key={i} className="calendar-day">
           {i}
           {dayEvents.map(event => (
-            <div key={event.id} className="event">{event.description}</div>
+            <div key={event.id} className="event"><b>{event.description}</b></div>
           ))}
         </div>
       );
@@ -63,6 +65,9 @@ const Calendar = () => {
   };
 
 
+  useEffect(() => {
+    LoadEvents();
+  }, []);
   return (
     <div class="containerrr">
     <div className="calendar">
@@ -74,7 +79,7 @@ const Calendar = () => {
       <div className="calendar-header">
         {renderDaysOfWeek()}
       </div>
-      <div className="calendar-grid" onClick={()=>{/* we need some functonality for adding to the calendar */}}>
+      <div className="calendar-grid">
         {renderDates()}
       </div>
     </div>
