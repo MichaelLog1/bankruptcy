@@ -1,11 +1,10 @@
 import React from 'react'
 import TopNav from "../../Components/TopNav/index"
 import "./About.css"
-import money_image from "../../Assets/money.png"
 
 
 function About() {
-
+  // We just need some info about the page
     return (
       <div>
         <TopNav></TopNav>

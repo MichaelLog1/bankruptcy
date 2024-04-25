@@ -4,7 +4,7 @@ import SideNav from '../../Components/SideNav/SideNav';
 import "./Form.css"
 
 function Form() {
-
+    // only need the sidenav and the form
     return (
       <div className='conts'>
         <SideNav></SideNav>
