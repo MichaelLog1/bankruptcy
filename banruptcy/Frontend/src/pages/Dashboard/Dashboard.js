@@ -7,7 +7,7 @@ import "./Dashboard.css"
 
 
 function Dashboard() {
-
+  // just needs the sidenav, calendar, and graph
     return (
       <div>
         <div class="components">
