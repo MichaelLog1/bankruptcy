@@ -16,8 +16,8 @@ const LoginSignup = () => {
     const [emailReg, setEmailReg] = useState("");
     
     const register = (state) => {
-        
-        if (action==="Sign Up")
+        // navigate and update/check the database upon signup/login
+        if (action==="Sign Up" && state === "Sign Up") {
             Axios.post("http://localhost:3001/Signup", {
                 username: usernameReg,
                 password: passwordReg,
@@ -25,15 +25,21 @@ const LoginSignup = () => {
             }).then((response) => {
                 console.log(response);
             });
-        else if (action==="Login")
+            
+            navigate("/Dashboard/User");
+        }
+            
+        else if (action==="Login" && state === "Login") {
             Axios.post("http://localhost:3001/Login", {
                 email: emailReg,
                 password: passwordReg,
             }).then((response) => {
                 console.log(response);
             });
-            setAction(state);
             navigate("/Dashboard/User");
+        }
+        // update state
+        setAction(state);
     };
     
 
@@ -72,6 +78,7 @@ const LoginSignup = () => {
             </div>
             {action==="Sign Up"?<div></div>:<div className='forgot-password'> Lost Password? <span>CLick Here!</span></div>}
             <div className='submit-container'>
+                {/* Based on the buttons, it will signify a login or a signup */}
                 <div className={action ==="Login"?"submit gray":"submit"} onClick={()=>{register("Sign Up")}}>Sign Up</div>
                 <div className={action ==="Sign Up"?"submit gray":"submit"} onClick={()=>{register("Login")}}>Login</div>
             </div>

@@ -3,6 +3,7 @@ import './index.css'
 import { Nav, NavLink, NavMenu } from "../NavbarElements/";
  
 const Navbar = () => {
+    // this will be used for the initial pages but not for the dashboard
     return (
         <>
             <Nav>

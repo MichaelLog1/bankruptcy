@@ -4,7 +4,7 @@ import './Home.css'
 import TopNav from "../../Components/TopNav/index"
 
 function Home() {
-
+    // just need some info about what the site will do
     return (
       <div>
         <TopNav></TopNav>

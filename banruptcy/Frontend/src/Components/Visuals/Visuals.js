@@ -5,6 +5,7 @@ import Axios from 'axios'
 import { useNavigate } from "react-router-dom"
 
 const Visuals = () => {
+    // set vars for the data visualization
     const navigate = useNavigate();
     const [eventList, setEventList] = useState({"amount":"0", "timeFrameStart":"0000-00-00", "date":"0000-00-00", "descripiton": "0"});
     const [index, setIndex] = useState(1);
@@ -17,7 +18,7 @@ const Visuals = () => {
     const [description, setDescription] = useState("0");
     const [currDate, setCurrDate] = useState(new Date());
 
-
+    // API request data for the user
     const prepData = () => {
         Axios.get('http://localhost:3001/data').then(res => {
             setEventList(res.data);
@@ -31,6 +32,7 @@ const Visuals = () => {
         });
     }
 
+    // Increments the event index and updates all relevant vars
     const incrementIndex = () => {
         setPrevIndex(index);
         if (index == eventList.length - 1) {
@@ -45,7 +47,7 @@ const Visuals = () => {
         difference();
         console.log(index);
     }
-
+    // Decrements the event index and updates all relevant vars
     const decrementIndex = () => {
         setPrevIndex(index);
         if (index == 0) {
@@ -63,6 +65,7 @@ const Visuals = () => {
         console.log(description);
     }
 
+    // calculates the amount of time in days between two calendar days
     const difference = () => {       
         const currDat = new Date();
         const dat1 = timeStart;
@@ -87,11 +90,12 @@ const Visuals = () => {
         setTimeTotal(time);
     }
 
+    // logout functionality
     const logout = () => {
-        
         navigate("/");
     }
 
+    // Calls the API once upone loading the page
     useEffect(() => { 
         prepData();
       }, []) 

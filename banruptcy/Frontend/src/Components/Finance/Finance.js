@@ -8,13 +8,14 @@ import password_icon from '../../Assets/password.png'
 
 
 function Finance() {
-// Target, timeframe, descriptor
+// amount, timeframe, descriptor
     const navigate = useNavigate();
     const [amount, setAmount] = useState("");
     const [timeFrameStart, setTimeFrameStart] = useState("");
     const [timeFrameEnd, setTimeFrameEnd] = useState("");
     const [description, setDescription] = useState("");
 
+    // API call to update the database
     const handleSumbit = () => {
         Axios.post("http://localhost:3001/Form", {
             amount: amount,
@@ -24,6 +25,7 @@ function Finance() {
         }).then((response) => {
             console.log(response);
         });
+        // navigate to the next page
         navigate("../Dashboard/user");
     };
 
